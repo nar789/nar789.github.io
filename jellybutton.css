@@ -1,5 +1,5 @@
 .button {
-    background: #8a56ac;
+    background: rgba(0, 132, 255, 0.5);
     width: 250px;
     height: 40px;
     padding: 4px 0;
@@ -13,7 +13,7 @@
 
 
 .button2 {
-    background: #d47fa6;
+    background: rgba(0, 33, 65, 0.5);
     width: 250px;
     height: 40px;
     padding: 4px 0;
