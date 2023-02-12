@@ -25,39 +25,48 @@
         init();
 
         function init() {
+            
+
             canvas = document.getElementById("canvas")
             ctx = canvas.getContext("2d");
+
+            requestFullscreen();
+            fixLandscape();
+
+
             registerResizeListener();
             drawCanvas();
             drawBack();
 
-            reqFullscreen();
+            
+           
+        }
 
+        function fixLandscape() {
             if(screen != null) {
-                
-                screen.orientation.lock('landscape').then(
+                screen.orientation.lock('landscape-primary').then(
                     (success) => console.log('success'),
                     (fail) => console.log('')
                 );
             }
         }
 
-        function reqFullscreen() {
-            var doc = document.documentElement;
-            if(doc.requestFullscreen) {
-                doc.requestFullscreen().then(
+        function requestFullscreen() {
+            
+            if(canvas.requestFullscreen) {
+                canvas.requestFullscreen().then(
                     (success) => console.log('success'),
                     (fail) => console.log(''));
-            } else if(doc.mozRequestFullScreen) {
-                doc.mozRequestFullScreen().then(
+            } else if(canvas.mozRequestFullScreen) {
+                canvas.mozRequestFullScreen().then(
                     (success) => console.log('success'),
                     (fail) => console.log(''));
-            } else if(doc.webkitRequestFullScreen) {
-                doc.webkitRequestFullScreen().then(
+            } else if(canvas.webkitRequestFullScreen) {
+                canvas.webkitRequestFullScreen().then(
                     (success) => console.log('success'),
                     (fail) => console.log(''));
-            } else if(doc.msRequestFullScreen) {
-                doc.msRequestFullScreen().then(
+            } else if(canvas.msRequestFullScreen) {
+                canvas.msRequestFullScreen().then(
                     (success) => console.log('success'),
                     (fail) => console.log(''));
             }
