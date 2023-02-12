@@ -31,8 +31,35 @@
             drawCanvas();
             drawBack();
 
+            reqFullscreen();
+
             if(screen != null) {
-                screen.orientation.lock('landscape');
+                
+                screen.orientation.lock('landscape').then(
+                    (success) => console.log('success'),
+                    (fail) => console.log('')
+                );
+            }
+        }
+
+        function reqFullscreen() {
+            var doc = document.documentElement;
+            if(doc.requestFullscreen) {
+                doc.requestFullscreen().then(
+                    (success) => console.log('success'),
+                    (fail) => console.log(''));
+            } else if(doc.mozRequestFullScreen) {
+                doc.mozRequestFullScreen().then(
+                    (success) => console.log('success'),
+                    (fail) => console.log(''));
+            } else if(doc.webkitRequestFullScreen) {
+                doc.webkitRequestFullScreen().then(
+                    (success) => console.log('success'),
+                    (fail) => console.log(''));
+            } else if(doc.msRequestFullScreen) {
+                doc.msRequestFullScreen().then(
+                    (success) => console.log('success'),
+                    (fail) => console.log(''));
             }
         }
 
